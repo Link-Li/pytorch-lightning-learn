@@ -8,32 +8,6 @@ from transformers import get_linear_schedule_with_warmup
 from transformers import BertModel, BertTokenizer
 
 
-class ResNet50(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.modle = resnet50(pretrained=True, progress=True)
-        # self.modle = nn.Sequential(*list(self.modle.children())[:-1])
-        # self.classifier = nn.Sequential(
-        #     nn.Linear(2048, 1024),
-        #     nn.ReLU(),
-        #     nn.Linear(1024, 10)
-        # )
-        # self.classifier = nn.Sequential(
-        #     nn.Linear(2048, 10)
-        # )
-        self.classifier = nn.Sequential(
-            nn.Linear(1000, 512),
-            nn.ReLU(),
-            nn.Linear(512, 10)
-        )
-        for param in self.modle.parameters():
-            param.requires_grad = False
-    
-    def forward(self, imgs):
-        # return self.classifier(self.modle(imgs).view(-1, 2048))
-        return self.classifier(self.modle(imgs))
-
-
 class TextModel(nn.Module):
     def __init__(self, args):
         super().__init__()

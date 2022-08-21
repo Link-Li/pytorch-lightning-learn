@@ -47,6 +47,11 @@ https://huggingface.co/Langboat/mengzi-t5-base
 cd 3-T5-base
 python main.py
 ```
+- 预测模型的生成结果：
+```
+cd 3-T5-base
+python predict.py --limit_predict_batches 1.0
+```
 
 
 
@@ -55,3 +60,7 @@ python main.py
 https://www.pytorchlightning.ai/
 
 https://github.com/renmada/t5-pegasus-pytorch
+
+情感分析数据集来自：https://zhuanlan.zhihu.com/p/80029681
+
+文本摘要数据集来自：https://zhuanlan.zhihu.com/p/341398288
